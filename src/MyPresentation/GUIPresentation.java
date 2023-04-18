@@ -6,13 +6,12 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
-public class GUIPresentation extends JFrame implements ActionListener{
+public class GUIPresentation extends JFrame implements ActionListener, MouseListener, KeyListener {
     public JPanel panel; //borde;
     public JLabel foto, descripcion, hobbie;
-   // public ImageIcon foto;
+    // public ImageIcon foto;
     public JButton btphoto, bthobbies, btdescrip;
 
 
@@ -23,6 +22,8 @@ public class GUIPresentation extends JFrame implements ActionListener{
         this.setLocationRelativeTo(null); //Establecemos que la ventana se abra en el centro del monitor
         iniciarComponente(); //Para poder ejecutar dicha clase
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Cuando cerramos la ventana, el programa termina de ejecutar
+        this.setResizable(false);
+
     }
 
     private void iniciarComponente(){
@@ -86,37 +87,41 @@ public class GUIPresentation extends JFrame implements ActionListener{
         btdescrip.setBounds(395, 320, 130, 30);
         panel.add(btphoto); //Agregar el botton en el panel
         btphoto.addActionListener(this); //Agregar accion al presionar le botton
+        btphoto.addKeyListener(this);
         panel.add(bthobbies);
         bthobbies.addActionListener(this);
-        panel.add(btdescrip);
+        bthobbies.addMouseListener(this);
+        bthobbies.addKeyListener(this);
+        //panel.add(btdescrip);
         btdescrip.addActionListener(this);
+        btdescrip.addKeyListener(this);
     }
-        private  ImageIcon image;
+    private  ImageIcon image;
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource()==btphoto) {
-                setTitle("YO");
-                hobbie.setIcon(null);
-                descripcion.setText(null);
-                this.image = new ImageIcon(getClass().getResource("/resources/sho1.jpg"));
-                foto.setIcon(image);
-            }
-            else if (e.getSource()==bthobbies) {
-                setTitle("HOBBIES");
-                foto.setIcon(null);
-                descripcion.setText(null);
-                this.image = new ImageIcon(getClass().getResource("/resources/hobbies.png"));
-                hobbie.setIcon(image);
-            }
-            else if (e.getSource()==btdescrip) {
-                setTitle("Expectativas");
-                foto.setIcon(null);
-                hobbie.setIcon(null);
-                descripcion.setText("<html>Mis expectativas es poder comprender JAVA, sentir GUSTO al programar en este lenguaje" +
-                        " y obvio, PODER APROBAR EL CURSO. <html>");
-                descripcion.setForeground(Color.BLACK);
-            }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==btphoto) {
+            setTitle("YO");
+            hobbie.setIcon(null);
+            descripcion.setText(null);
+            this.image = new ImageIcon(getClass().getResource("/resources/sho1.jpg"));
+            foto.setIcon(image);
+        }
+        /*else if (e.getSource()==bthobbies) {
+            setTitle("HOBBIES");
+            foto.setIcon(null);
+            descripcion.setText(null);
+            this.image = new ImageIcon(getClass().getResource("/resources/hobbies.png"));
+            hobbie.setIcon(image);
+        }
+        else if (e.getSource()==btdescrip) {
+            setTitle("Expectativas");
+            foto.setIcon(null);
+            hobbie.setIcon(null);
+            descripcion.setText("<html>Mis expectativas es poder comprender JAVA, sentir GUSTO al programar en este lenguaje" +
+                    " y obvio, PODER APROBAR EL CURSO. <html>");
+            descripcion.setForeground(Color.BLACK);
+        }*/
 
     }
 
@@ -127,5 +132,60 @@ public class GUIPresentation extends JFrame implements ActionListener{
                 GUIPresentation GUI = new GUIPresentation();
             }
         });
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println(e.getKeyChar());
+        if(e.getKeyCode()==77){
+            setTitle("Expectativas");
+            foto.setIcon(null);
+            hobbie.setIcon(null);
+            descripcion.setText("<html>Mis expectativas es poder comprender JAVA, sentir GUSTO al programar en este lenguaje" +
+                    " y obvio, PODER APROBAR EL CURSO. <html>");
+            descripcion.setForeground(Color.BLACK);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        System.out.println(e.getClickCount());
+        if(e.getClickCount()==2){
+            setTitle("HOBBIES");
+            foto.setIcon(null);
+            descripcion.setText(null);
+            this.image = new ImageIcon(getClass().getResource("/resources/hobbies.png"));
+            hobbie.setIcon(image);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
