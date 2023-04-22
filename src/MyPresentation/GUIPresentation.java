@@ -12,7 +12,7 @@ public class GUIPresentation extends JFrame implements ActionListener, MouseList
     public JPanel panel; //borde;
     public JLabel foto, descripcion, hobbie;
     // public ImageIcon foto;
-    public JButton btphoto, bthobbies, btdescrip;
+    public JButton btphoto, bthobbies;
 
 
     public GUIPresentation(){
@@ -38,16 +38,12 @@ public class GUIPresentation extends JFrame implements ActionListener, MouseList
         panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.WHITE); //Establecemos el color del panel
-        //TitledBorder title;
-        //title = BorderFactory.createTitledBorder("title");
-        //panel.setBorder(title);
         this.getContentPane().add(panel);  //Agregamos el panel a la ventana
 
     }
 
     private void colocarEtiquetas(){
         JLabel etiqueta = new JLabel("Si deseas conocerme un poco mas oprime los botones");
-        //etiqueta.setBackground(Color.blue);
         etiqueta.setText("Si deseas conocerme un poco mas oprime los botones");
         etiqueta.setFont(new Font("Times New Roman",Font.BOLD,15)); //Establece la fuente del texto.
         etiqueta.setBounds(0,0, 600, 40);
@@ -78,13 +74,10 @@ public class GUIPresentation extends JFrame implements ActionListener, MouseList
     private void colocarBotones() {
         btphoto = new JButton();
         bthobbies = new JButton();
-        btdescrip = new JButton();
         btphoto.setText("Foto"); //Texto del botton
-        btphoto.setBounds(75, 320, 100, 30); //Posicion del botton
+        btphoto.setBounds(120, 320, 100, 30); //Posicion del botton
         bthobbies.setText("Hobbies");
-        bthobbies.setBounds(240, 320, 100, 30);
-        btdescrip.setText("Expectativa");
-        btdescrip.setBounds(395, 320, 130, 30);
+        bthobbies.setBounds(360, 320, 100, 30);
         panel.add(btphoto); //Agregar el botton en el panel
         btphoto.addActionListener(this); //Agregar accion al presionar le botton
         btphoto.addKeyListener(this);
@@ -92,9 +85,6 @@ public class GUIPresentation extends JFrame implements ActionListener, MouseList
         bthobbies.addActionListener(this);
         bthobbies.addMouseListener(this);
         bthobbies.addKeyListener(this);
-        //panel.add(btdescrip);
-        btdescrip.addActionListener(this);
-        btdescrip.addKeyListener(this);
     }
     private  ImageIcon image;
 
@@ -107,22 +97,6 @@ public class GUIPresentation extends JFrame implements ActionListener, MouseList
             this.image = new ImageIcon(getClass().getResource("/resources/sho1.jpg"));
             foto.setIcon(image);
         }
-        /*else if (e.getSource()==bthobbies) {
-            setTitle("HOBBIES");
-            foto.setIcon(null);
-            descripcion.setText(null);
-            this.image = new ImageIcon(getClass().getResource("/resources/hobbies.png"));
-            hobbie.setIcon(image);
-        }
-        else if (e.getSource()==btdescrip) {
-            setTitle("Expectativas");
-            foto.setIcon(null);
-            hobbie.setIcon(null);
-            descripcion.setText("<html>Mis expectativas es poder comprender JAVA, sentir GUSTO al programar en este lenguaje" +
-                    " y obvio, PODER APROBAR EL CURSO. <html>");
-            descripcion.setForeground(Color.BLACK);
-        }*/
-
     }
 
     public static void main(String[] args) {
