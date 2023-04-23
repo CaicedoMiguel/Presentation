@@ -9,15 +9,14 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.*;
 
 public class GUIPresentation extends JFrame implements ActionListener, MouseListener, KeyListener {
-    public JPanel panel; //borde;
+    public JPanel panel;
     public JLabel foto, descripcion, hobbie;
-    // public ImageIcon foto;
     public JButton btphoto, bthobbies;
 
 
     public GUIPresentation(){
         this.setTitle("MyPresentation");  //Establecemos el titulo de nuestra ventana
-        this.setSize(600,400); //EStablecemos el tamaño de la ventana
+        this.setSize(600,400); //Establecemos el tamaño de la ventana
         this.setVisible(true); //Con este metodo hacemos visible la ventana
         this.setLocationRelativeTo(null); //Establecemos que la ventana se abra en el centro del monitor
         iniciarComponente(); //Para poder ejecutar dicha clase
